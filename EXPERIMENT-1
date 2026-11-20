@@ -1,0 +1,77 @@
+#include <iostream>
+using namespace std;
+
+#define SIZE 5
+
+string stack[SIZE];
+int top = -1;
+
+void push()
+{
+    string book;
+
+    if (top == SIZE - 1)
+        cout << "Stack Overflow\n";
+    else
+    {
+        cout << "Enter book name: ";
+        cin >> book;
+
+        top++;
+        stack[top] = book;
+    }
+}
+
+void pop()
+{
+    if (top == -1)
+        cout << "Stack Underflow\n";
+    else
+    {
+        cout << "Removed Book: " << stack[top] << endl;
+        top--;
+    }
+}
+
+void peek()
+{
+    if (top == -1)
+        cout << "Stack is Empty\n";
+    else
+        cout << "Top Book: " << stack[top] << endl;
+}
+
+void display()
+{
+    if (top == -1)
+        cout << "Stack is Empty\n";
+    else
+    {
+        for (int i = top; i >= 0; i--)
+            cout << stack[i] << endl;
+    }
+}
+
+int main()
+{
+    int ch;
+
+    do
+    {
+        cout << "\n1.Push 2.Pop 3.Peek 4.Display 5.Exit\n";
+        cin >> ch;
+
+        switch (ch)
+        {
+            case 1: push(); break;
+            case 2: pop(); break;
+            case 3: peek(); break;
+            case 4: display(); break;
+        }
+
+    } while (ch != 5);
+
+    return 0;
+}
+
+
